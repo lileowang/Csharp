@@ -19,6 +19,9 @@ namespace Demo_cs
         {
             bool bRet = true;
 
+            Test_regex test_regex = new Test_regex();
+            bRet = test_regex.Run();
+
             WriteLine($"{bRet}");
             ReadKey();
             return 0;
