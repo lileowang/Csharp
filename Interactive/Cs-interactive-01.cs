@@ -24,3 +24,10 @@ null
 > cw($"{nameof(n2)} = {n2}")
 n2 = 10
 
+// stopwatch for performance
+> using System.Diagnostics;
+> var w = new Stopwatch();
+> w.Start();
+> w.Stop();
+> w.ElapsedMilliseconds
+3957
