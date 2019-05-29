@@ -31,3 +31,11 @@ n2 = 10
 > w.Stop();
 > w.ElapsedMilliseconds
 3957
+
+// lambda for delegate
+> Func<int, int, bool> eq = (x, y) => x == y;
+> eq(1, 1)
+true
+> eq(1, 2)
+false
+
