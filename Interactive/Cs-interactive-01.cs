@@ -39,3 +39,16 @@ true
 > eq(1, 2)
 false
 
+// lambda for regex
+> using System.Text.RegularExpressions;
+> var s = "if 2+2 is 4 then 1+2+3+4 is 10";
+> s
+"if 2+2 is 4 then 1+2+3+4 is 10"
+> var r = Regex.Replace(s, @"(\d+)\+(\d+)", m =>
+. {
+.     var a = Int32.Parse(m.Groups[1].ToString());
+.     var b = Int32.Parse(m.Groups[2].ToString());
+.     return (a + b).ToString();
+. });
+> r
+"if 4 is 4 then 3+7 is 10"
