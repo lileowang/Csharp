@@ -63,3 +63,8 @@ List<int>(3) { 3, 4, 5 }
 > b.Average()
 4
 
+// LINQ for reverse
+> var c = "Hello world!";
+> var d = new string(c.ToCharArray().Reverse().ToArray());
+> d
+"!dlrow olleH"
