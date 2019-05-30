@@ -52,3 +52,14 @@ false
 . });
 > r
 "if 4 is 4 then 3+7 is 10"
+
+// LINQ for filter
+> var a = new int[] { 1, 2, 3, 4, 5 };
+> var b = a.Where(i => i > 2).ToList();
+> b
+List<int>(3) { 3, 4, 5 }
+> b.Count()
+3
+> b.Average()
+4
+
