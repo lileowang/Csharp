@@ -24,8 +24,14 @@
 
         <xsl:variable name="ns1" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::*"/>
         <xsl:variable name="ns1-next-rev" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::tc[@name='boot'][1]/preceding-sibling::*"/>
-        <xsl:variable name="ns2" select="$ns1[count(. | $ns1-next-rev) = count($ns1-next-rev)]"/>
+        <!-- intersection of two node sets with union -->
+        <!--<xsl:variable name="ns2" select="$ns1[count(. | $ns1-next-rev) = count($ns1-next-rev)]"/>-->
 
+        <!-- result tree fragment -->
+        <xsl:variable name="ns1-rtf">
+            <xsl:value-of select="$ns1"/>
+        </xsl:variable>
+        <xsl:variable name="ns2" select="msxsl:node-set($ns1-rtf)/tc[@name='boot'][1]/preceding-sibling::*"/>
         <xsl:choose>
             <xsl:when test="count($ns2) &gt; 0">
                 <xsl:call-template name="print-result">
