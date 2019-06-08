@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet 
+<xsl:stylesheet
     version="1.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt"
@@ -25,11 +25,22 @@
         <xsl:variable name="ns1" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::*"/>
         <xsl:variable name="ns1-next-rev" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::tc[@name='boot'][1]/preceding-sibling::*"/>
         <xsl:variable name="ns2" select="$ns1[count(. | $ns1-next-rev) = count($ns1-next-rev)]"/>
-        
-        <xsl:call-template name="print-result">
-            <xsl:with-param name="boot-val" select="$boot-val"/>
-            <xsl:with-param name="ns" select="$ns2"/>
-        </xsl:call-template>
+
+        <xsl:choose>
+            <xsl:when test="count($ns2) &gt; 0">
+                <xsl:call-template name="print-result">
+                    <xsl:with-param name="boot-val" select="$boot-val"/>
+                    <xsl:with-param name="ns" select="$ns2"/>
+                </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:call-template name="print-result">
+                    <xsl:with-param name="boot-val" select="$boot-val"/>
+                    <xsl:with-param name="ns" select="$ns1"/>
+                </xsl:call-template>
+            </xsl:otherwise>
+        </xsl:choose>
+
     </xsl:template>
 
     <xsl:template name="print-result">
