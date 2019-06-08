@@ -22,16 +22,30 @@
     <xsl:template name="get-result">
         <xsl:param name="boot-val"/>
 
+        <xsl:variable name="ns1" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::*"/>
+        <xsl:variable name="ns1-next-rev" select="//tc[@name='boot'][text()=$boot-val]/following-sibling::tc[@name='boot'][1]/preceding-sibling::*"/>
+        <xsl:variable name="ns2" select="$ns1[count(. | $ns1-next-rev) = count($ns1-next-rev)]"/>
+        
         <xsl:call-template name="print-result">
             <xsl:with-param name="boot-val" select="$boot-val"/>
+            <xsl:with-param name="ns" select="$ns2"/>
         </xsl:call-template>
     </xsl:template>
 
     <xsl:template name="print-result">
         <xsl:param name="boot-val"/>
+        <xsl:param name="ns"/>
 
         <xsl:element name="{$boot-val}">
-            
+            <xsl:for-each select="$ns">
+                <xsl:variable name="name">
+                    <xsl:value-of select="@name"/>
+                </xsl:variable>
+
+                <xsl:element name="{$name}">
+                    <xsl:value-of select="."/>
+                </xsl:element>
+            </xsl:for-each>
         </xsl:element>
     </xsl:template>
 </xsl:stylesheet>
