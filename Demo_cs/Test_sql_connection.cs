@@ -22,7 +22,7 @@ namespace Demo_cs
 {
     class Test_sql_connection
     {
-        public bool Run()
+        public bool Run(string[] args)
         {
             bool bRet = true;
             string fn = @"C:\Temp\test01.sql";

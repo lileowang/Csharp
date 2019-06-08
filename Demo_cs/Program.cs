@@ -19,11 +19,14 @@ namespace Demo_cs
         {
             bool bRet = true;
 
-            //Test_regex test_regex = new Test_regex();
-            //bRet = test_regex.Run();
+            Test_xml_writer test_xml_writer = new Test_xml_writer();
+            bRet = test_xml_writer.Run(args);
 
-            Test_sql_connection test_Sql_Connection = new Test_sql_connection();
-            bRet = test_Sql_Connection.Run();
+            //Test_regex test_regex = new Test_regex();
+            //bRet = test_regex.Run(args);
+
+            //Test_sql_connection test_Sql_Connection = new Test_sql_connection();
+            //bRet = test_Sql_Connection.Run(args);
 
             WriteLine($"{bRet}");
             ReadKey();
