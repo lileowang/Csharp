@@ -10,10 +10,7 @@
 //
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Xml;
 using static System.Console;
 
@@ -30,6 +27,39 @@ namespace Demo_cs
             try
             {
                 XmlWriterSettings set = new XmlWriterSettings();
+                set.Indent = true;
+                set.IndentChars = "    ";
+                set.OmitXmlDeclaration = true;
+                set.CloseOutput = true;
+
+                using (XmlWriter w = XmlWriter.Create(fn, set))
+                {
+                    w.WriteStartElement("root");
+
+                    for (int i = 0; i < 6; i++)
+                    {
+                        w.WriteStartElement("tc");
+                        w.WriteAttributeString("name", "boot");
+                        w.WriteString("b" + (i + 1).ToString());
+                        w.WriteEndElement();
+
+                        for (int j = 0; j < 3; j++)
+                        {
+                            w.WriteStartElement("tc");
+                            w.WriteAttributeString("name", "test");
+                            w.WriteString("t" + (i + 1).ToString() + (j + 1).ToString());
+                            w.WriteEndElement();
+                        }
+                    }
+
+                    w.WriteEndElement();
+                }
+
+                string[] content = File.ReadAllLines(fn);
+                foreach (var s in content)
+                {
+                    WriteLine(s);
+                }
             }
             catch (Exception e)
             {

@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="Test_regex.cs" />
     <Compile Include="Test_sql_connection.cs" />
     <Compile Include="Test_xml_writer.cs" />

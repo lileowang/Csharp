@@ -19,8 +19,11 @@ namespace Demo_cs
         {
             bool bRet = true;
 
-            Test_xml_writer test_xml_writer = new Test_xml_writer();
-            bRet = test_xml_writer.Run(args);
+            Test test = new Test();
+            bRet = test.Run(args);
+
+            //Test_xml_writer test_xml_writer = new Test_xml_writer();
+            //bRet = test_xml_writer.Run(args);
 
             //Test_regex test_regex = new Test_regex();
             //bRet = test_regex.Run(args);
