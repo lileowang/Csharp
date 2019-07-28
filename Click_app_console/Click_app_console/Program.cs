@@ -22,11 +22,22 @@ namespace Click_app_console
         [DllImport("user32.dll", EntryPoint = "SetCursorPos")]
         private static extern bool SetCursorPos(int x, int y);
 
-        [DllImport("user32.dll")]
-        private static extern void mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
-         
-        private const int MOUSE_EVENT_F_LEFT_DOWN = 0x02;
-        private const int MOUSE_EVENT_F_LEFT_UP = 0x04;
+        [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
+        private static extern void mouse_event(uint dwFlags, uint dx, uint dy, uint dwData, int dwExtraInfo);
+
+        // http://pinvoke.net/default.aspx/user32.mouse_event
+        const uint MOUSEEVENTF_ABSOLUTE = 0x8000;
+        const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
+        const uint MOUSEEVENTF_LEFTUP = 0x0004;
+        const uint MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+        const uint MOUSEEVENTF_MIDDLEUP = 0x0040;
+        const uint MOUSEEVENTF_MOVE = 0x0001;
+        const uint MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        const uint MOUSEEVENTF_RIGHTUP = 0x0010;
+        const uint MOUSEEVENTF_XDOWN = 0x0080;
+        const uint MOUSEEVENTF_XUP = 0x0100;
+        const uint MOUSEEVENTF_WHEEL = 0x0800;
+        const uint MOUSEEVENTF_HWHEEL = 0x01000;
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -69,8 +80,14 @@ namespace Click_app_console
         void Click_at_cursor(int x, int y)
         {
             SetCursorPos(x, y);
-            mouse_event(MOUSE_EVENT_F_LEFT_DOWN, x, y, 0, 0);
-            mouse_event(MOUSE_EVENT_F_LEFT_UP, x, y, 0, 0);
+            Thread.Sleep(1000);
+            mouse_event(MOUSEEVENTF_ABSOLUTE, (uint)x, (uint)y, 0, 0);
+
+            //mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
+            //Thread.Sleep(50);
+            //mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
         }
     }
 }
