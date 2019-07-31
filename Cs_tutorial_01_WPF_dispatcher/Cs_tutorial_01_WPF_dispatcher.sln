@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cs_tutorial_01_WPF_dispatcher", "Cs_tutorial_01_WPF_dispatcher\Cs_tutorial_01_WPF_dispatcher.csproj", "{89DFE328-5DBD-41A7-A111-0E611EE3BC7C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89DFE328-5DBD-41A7-A111-0E611EE3BC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89DFE328-5DBD-41A7-A111-0E611EE3BC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89DFE328-5DBD-41A7-A111-0E611EE3BC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89DFE328-5DBD-41A7-A111-0E611EE3BC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {07E88F66-DBE9-41B6-A632-EB8216EB6C45}
+	EndGlobalSection
+EndGlobal
