@@ -40,13 +40,13 @@ namespace Cs_tutorial_01_WPF_dispatcher
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
-                Longrunning();
+                Long_running();
             }).Start();
 
             btnContinous.IsEnabled = false;
         }
 
-        private void Longrunning()
+        private void Long_running()
         {
             try
             {
