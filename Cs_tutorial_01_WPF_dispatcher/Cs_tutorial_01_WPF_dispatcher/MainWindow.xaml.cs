@@ -23,7 +23,7 @@ namespace Cs_tutorial_01_WPF_dispatcher
     public partial class MainWindow : Window
     {
         private int _count = 0;
-        private delegate void Update_label_background_callback(int color);
+        private delegate void Update_label_background_callback(int state);
         public MainWindow()
         {
             InitializeComponent();
@@ -57,12 +57,12 @@ namespace Cs_tutorial_01_WPF_dispatcher
 
                     //Update_label_background(1);
                     //lblMessage.Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), new object[] { 1 });
-                    lblMessage.Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), DispatcherPriority.Render, new object[] { 1 });
+                    Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), DispatcherPriority.Render, new object[] { 1 });
                     Thread.Sleep(delay_ms);
 
                     //Update_label_background(2);
                     //lblMessage.Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), new object[] { 2 });
-                    lblMessage.Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), DispatcherPriority.Render, new object[] { 2 });
+                    Dispatcher.BeginInvoke(new Update_label_background_callback(Update_label_background), DispatcherPriority.Render, new object[] { 2 });
                     Thread.Sleep(delay_ms);
                 }
             }
@@ -84,6 +84,7 @@ namespace Cs_tutorial_01_WPF_dispatcher
                 case 2:
                     lblMessage.Background = Brushes.Yellow;
                     break;
+
                 default:
                     break;
             }
